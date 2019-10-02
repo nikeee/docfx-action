@@ -3,9 +3,9 @@ author: Niklas Mollenhauer
 description: Runs docfx as a GitHub Action.
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
 
 branding:
   icon: book
-  color: 'green'
+  color: green
