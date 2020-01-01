@@ -1,8 +1,10 @@
 FROM mono:latest
 
-RUN apt update -yqq && \
-    apt install -yqq unzip && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt update -yqq \
+    && apt install -yqq \
+        unzip \
+        git \
+        && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/docfx:${PATH}"
 ENTRYPOINT [ "docfx" ]
