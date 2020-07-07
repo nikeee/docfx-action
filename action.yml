@@ -4,7 +4,7 @@ description: Runs docfx as a GitHub Action.
 
 runs:
   using: docker
-  image: Dockerfile
+  image: 'docker://nikeee/docfx-action:latest'
 
 branding:
   icon: book
