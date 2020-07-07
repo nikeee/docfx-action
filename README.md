@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     # ...
-    - uses: nikeee/docfx-action@master
+    - uses: nikeee/docfx-action@v1.0.0
       name: Build Documentation
       with:
         args: path/to/your/docfx.json
@@ -25,7 +25,7 @@ jobs:
 
 In general, to run `docfx <something>`, you can use:
 ```yaml
-    - uses: nikeee/docfx-action@master
+    - uses: nikeee/docfx-action@v1.0.0
       with:
         args: <something>
 ```
