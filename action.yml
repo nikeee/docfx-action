@@ -1,10 +1,10 @@
 name: docfx-action
-author: Niklas Mollenhauer
+author: NUnit Docs team (forked from Niklas Mollenhauer)
 description: Runs docfx as a GitHub Action.
 
 runs:
   using: docker
-  image: 'docker://nikeee/docfx-action:latest'
+  image: 'docker://nunitdocs/docfx-action:latest'
 
 branding:
   icon: book
