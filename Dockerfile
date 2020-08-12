@@ -11,6 +11,7 @@ RUN apt update -yqq \
         unzip \
         git \
         dotnet-sdk-3.1 \
+        wkhtmltopdf \
     && rm -rf /var/lib/apt/lists/*
 
 ENV PATH="/docfx:${PATH}"
