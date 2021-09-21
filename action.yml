@@ -4,7 +4,7 @@ description: Runs docfx as a GitHub Action.
 
 runs:
   using: docker
-  image: 'docker://nunitdocs/docfx-action:latest'
+  image: 'Dockerfile'
 
 branding:
   icon: book
