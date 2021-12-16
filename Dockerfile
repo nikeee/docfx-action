@@ -10,7 +10,7 @@ RUN apt update -yqq \
     && apt install -yqq \
         unzip \
         git \
-        dotnet-sdk-3.1 \
+        dotnet-sdk-6 \
         wkhtmltopdf \
     && rm -rf /var/lib/apt/lists/*
 
