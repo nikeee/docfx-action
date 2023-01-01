@@ -22,3 +22,6 @@ ADD ./entrypoint.sh /usr/local/bin/docfx
 ADD https://github.com/dotnet/docfx/releases/download/v2.59.4/docfx.zip /
 RUN unzip docfx.zip -d /docfx && \
     rm docfx.zip
+
+# An attrmpt to avoid "dubious ownership" errors in CI systems
+RUN git config --global --add safe.directory /github/workspace
