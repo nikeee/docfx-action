@@ -1,27 +1,10 @@
-FROM mono:latest
+FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy
 
-RUN apt update -yqq \
-    && apt install -yqq gpg apt-transport-https \
-    && curl -o - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.asc.gpg \
-    && curl -o /etc/apt/sources.list.d/microsoft-prod.list https://packages.microsoft.com/config/debian/9/prod.list \
-    && chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg \
-                       /etc/apt/sources.list.d/microsoft-prod.list \
-    && apt update -yqq \
-    && apt install -yqq \
-        unzip \
-        git \
-        dotnet-sdk-6.0 \
-        wkhtmltopdf \
-    && rm -rf /var/lib/apt/lists/*
+RUN dotnet --version
 
-ENV PATH="/docfx:${PATH}"
+RUN dotnet tool install --global docfx --version 2.60.0-preview.2
+RUN dotnet tool list --global
+
+RUN docfx -v
+
 ENTRYPOINT [ "docfx" ]
-
-ADD ./entrypoint.sh /usr/local/bin/docfx
-
-ADD https://github.com/dotnet/docfx/releases/download/v2.59.4/docfx.zip /
-RUN unzip docfx.zip -d /docfx && \
-    rm docfx.zip
-
-# An attrmpt to avoid "dubious ownership" errors in CI systems
-RUN git config --global --add safe.directory /github/workspace
