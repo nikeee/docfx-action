@@ -1,4 +1,7 @@
 # docfx-action
+This project is currently not maintained. We recommend using the fork by NUnit, which fixes a lot of stuff:
+https://github.com/NUnit/docfx-action
+
 A GitHub action to run [DocFX](https://dotnet.github.io/docfx/) and generate a documentation site.
 
 ## Usage
