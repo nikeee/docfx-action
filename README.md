@@ -20,7 +20,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       name: Checkout code
-    - uses: nunit/docfx-action@v1.0.0
+    - uses: nunit/docfx-action@v2.4.0
       name: Build Documentation
       with:
         args: path/to/your/docfx.json
@@ -33,7 +33,7 @@ jobs:
 
 In general, to run `docfx <something>`, you can use:
 ```yaml
-    - uses: nunit/docfx-action@v1.0.0
+    - uses: nunit/docfx-action@v2.4.0
       with:
         args: <something>
 ```
