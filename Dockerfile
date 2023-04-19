@@ -4,6 +4,7 @@ RUN dotnet --version
 
 # Setting the path up to allow .NET tools
 ENV PATH "$PATH:/root/.dotnet/tools"
+ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 
 RUN dotnet tool install --global docfx --version 2.62.1
 
