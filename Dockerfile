@@ -1,24 +1,19 @@
-FROM mono:latest
+FROM mcr.microsoft.com/dotnet/sdk:6.0-jammy
 
-RUN apt update -yqq \
-    && apt install -yqq gpg apt-transport-https \
-    && curl -o - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/microsoft.asc.gpg \
-    && curl -o /etc/apt/sources.list.d/microsoft-prod.list https://packages.microsoft.com/config/debian/9/prod.list \
-    && chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg \
-                       /etc/apt/sources.list.d/microsoft-prod.list \
-    && apt update -yqq \
-    && apt install -yqq \
-        unzip \
-        git \
-        dotnet-sdk-3.1 \
-        wkhtmltopdf \
-    && rm -rf /var/lib/apt/lists/*
+RUN dotnet --version
 
-ENV PATH="/docfx:${PATH}"
+# Setting the path up to allow .NET tools
+ENV PATH "$PATH:/root/.dotnet/tools"
+
+RUN dotnet tool install --global docfx --version 2.62.1
+
+# Just checking things
+RUN dotnet tool list --global
+RUN docfx -v
+
+# HACK: This effectively negates a git security patch that requires file ownership to match.
+# Doing this because it does not appear that there is a standard way to address this in our container setup.
+# A follow-up will likely be to take in a parameter and set the safe directory when that parameter is passed in.
+RUN git config --system --add safe.directory '*'
+
 ENTRYPOINT [ "docfx" ]
-
-ADD ./entrypoint.sh /usr/local/bin/docfx
-
-ADD https://github.com/dotnet/docfx/releases/download/v2.59.2/docfx.zip /
-RUN unzip docfx.zip -d /docfx && \
-    rm docfx.zip
