@@ -6,7 +6,7 @@ RUN dotnet --version
 ENV PATH "$PATH:/root/.dotnet/tools"
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 
-RUN dotnet tool install --global docfx --version 2.67.2
+RUN dotnet tool install --global docfx --version 2.71.0
 
 # Just checking things
 RUN dotnet tool list --global
