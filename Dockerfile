@@ -1,11 +1,11 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy
 
 RUN dotnet --version
 
 # Setting the path up to allow .NET tools
 ENV PATH "$PATH:/root/.dotnet/tools"
 
-RUN dotnet tool install --global docfx --version 2.71.0
+RUN dotnet tool install --global docfx --version 2.73.2
 
 # Just checking things
 RUN dotnet tool list --global
