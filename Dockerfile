@@ -5,7 +5,7 @@ RUN dotnet --version
 # Setting the path up to allow .NET tools
 ENV PATH "$PATH:/root/.dotnet/tools"
 
-RUN dotnet tool install --global docfx --version 2.74.1
+RUN dotnet tool install --global docfx --version 2.75.2
 
 # Just checking things
 RUN dotnet tool list --global
