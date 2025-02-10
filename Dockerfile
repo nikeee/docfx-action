@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0-noble
 RUN dotnet --version
 
 # Setting the path up to allow .NET tools
-ENV PATH "$PATH:/root/.dotnet/tools"
+ENV PATH="$PATH:/root/.dotnet/tools"
 
 RUN dotnet tool install --global docfx --version 2.78.2
 
