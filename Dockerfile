@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.101-jammy
 
 RUN dotnet --version
 
